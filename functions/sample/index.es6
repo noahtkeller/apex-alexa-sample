@@ -1,13 +1,12 @@
 import Alexa from "alexa-sdk";
 
-import { handler as greetHandler } from "./src/handlers/greet.es6";
-import { handler as questionsHandler } from "./src/handlers/questions.es6";
+import {handler as baseHandler} from "./src/handlers/base.es6";
 
 export default (event, context) => {
     const alexa = Alexa.handler(event, context);
     alexa.appId = process.env.APP_ID;
-    alexa.registerHandlers(greetHandler, questionsHandler);
-    alexa.dynamoDBTableName = process.env.USER_TABLE_NAME;
+    alexa.dynamoDBTableName = process.env.TABLE_NAME;
+    alexa.registerHandlers(baseHandler);
     alexa.execute();
 };
 

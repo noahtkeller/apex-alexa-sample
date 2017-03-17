@@ -1,11 +1,17 @@
 {
-  "description": "",
+  "name": "nkeller_sample",
+  "description": "Apex deployed lambda function",
   "memory": 128,
-  "timeout": 5,
+  "timeout": 35,
+  "role": "arn:aws:iam::293313708031:role/sample_lambda_function",
   "handler": "lib.default",
   "hooks": {
     "build": "yarn install --production && ../../node_modules/.bin/webpack --config ../../webpack.config.js --bail",
     "clean": "rm -rf lib node_modules"
+  },
+  "environment": {
+    "APP_ID": "amzn1.ask.skill.c6a96809-cc5f-42c7-b2a2-cf10bc66995e",
+    "TABLE_NAME": "nkeller_EchoSkills"
   },
   "runtime": "nodejs4.3"
 }
